@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<properties resource="db.properties"/>
+ 	<!-- 指定类型别名 -->
+ 	<typeAliases>
+ 		<typeAlias type="com.zhiyou.model.User" alias="user"/>
+ 		<typeAlias type="com.zhiyou.model.Score" alias="score"/>
+ 		<typeAlias type="com.zhiyou.model.Teacher" alias="teacher"/>
+ 	</typeAliases>
+ 	<!-- 配置数据库环境  并制定默认使用哪一个-->
+ 	<environments default="A">
+ 		<environment id="A">
+ 			<!--配置事务管理器  -->
+ 			<transactionManager type="org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory"/>
+ 			<dataSource type="org.apache.ibatis.datasource.pooled.PooledDataSourceFactory">
+ 				<property name="driver" value="${driver}"/>
+ 				<property name="url" value="${url}"/>
+ 				<property name="username" value="${username}"/>
+ 				<property name="password" value="${password}"/>
+ 				
+ 			</dataSource>
+ 		</environment>
+ 	</environments>
+ 	<!--引入其他的mapper文件  -->
+ 	<mappers>
+ 		<mapper resource="mapper/usermapper.xml"  />
+ 		<mapper resource="mapper/scoremapper.xml"/>
+ 		<mapper resource="mapper/teachermapper.xml"/>
+ 	</mappers>
+ </configuration>
